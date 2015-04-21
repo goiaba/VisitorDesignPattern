@@ -2,6 +2,16 @@ package edu.luc.cs.spring2015.comp473.project4.visitorpattern.visitor;
 
 import edu.luc.cs.spring2015.comp473.project4.visitorpattern.expression.*;
 
+/**
+ * 
+ * @author bruno
+ *
+ * A visitor responsible for print expressions
+ * 
+ * Since we do not have state in this class we implement
+ *  it as a singleton.
+ *
+ */
 public class PrettyPrinter implements Visitor<String> {
 
 	private static PrettyPrinter instance;
@@ -18,6 +28,15 @@ public class PrettyPrinter implements Visitor<String> {
 		System.out.print(print(expr));
 	}
 	
+	/**
+	 * Method responsible for passing this <code>Visitor</code>
+	 *  to the specified <code>Expr</>. After that the expr
+	 *  knows which visit method to call (based in its argument
+	 *  type).
+	 *  
+	 * @param expr
+	 * @return
+	 */
 	public String print(Expr expr) {
 		return expr.accept(this);
 	}

@@ -9,6 +9,16 @@ import edu.luc.cs.spring2015.comp473.project4.visitorpattern.expression.Plus;
 import edu.luc.cs.spring2015.comp473.project4.visitorpattern.expression.Times;
 import edu.luc.cs.spring2015.comp473.project4.visitorpattern.expression.UMinus;
 
+/**
+ * 
+ * @author bruno
+ *
+ * A visitor responsible for evaluate expressions
+ * 
+ * Since we do not have state in this class we implement
+ *  it as a singleton.
+ *  
+ */
 public class Evaluator implements Visitor<Double> {
 
 	private static Evaluator instance;
@@ -21,6 +31,15 @@ public class Evaluator implements Visitor<Double> {
 		return instance;
 	}
 	
+	/**
+	 * Method responsible for passing this <code>Visitor</code>
+	 *  to the specified <code>Expr</>. After that the expr
+	 *  knows which visit method to call (based in its argument
+	 *  type).
+	 *  
+	 * @param expr
+	 * @return
+	 */
 	public Double evaluate(Expr expr) {
 		return expr.accept(this);
 	}
